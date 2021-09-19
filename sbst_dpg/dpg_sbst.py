@@ -36,6 +36,7 @@ class SBSTDPG:
         self.logger = LoggerFactory.get_logger(__class__.__name__)
 
     def run(self):
+        self.logger.info('Starting SBST-DPG. Project path - %s' % self.project_path)
         self.load_configs()
         self.defect_predictor = DefectPredictorFactory.get_defect_predictor(ConfigsManager.get_instance()
                                                                             .get_defect_predictor())
@@ -48,14 +49,17 @@ class SBSTDPG:
         self.run_sbst()
 
     def load_configs(self):
+        self.logger.info('Loading configurations to ConfigsManager.')
         ConfigsManager.get_instance().load_configs()
 
     def run_defect_predictor(self):
+        self.logger.info('Starting defect predictor.')
         self.defect_predictor.run(self.project_path, self.sbst_dpg_workspace)
 
     def collect_classes_in_project(self, src_path):
+        self.logger.debug('Collecting classes in project. Source path - %s' % src_path)
         current_path = os.path.dirname(os.path.realpath(__file__))
-        prepare_class_list_command = current_path + "/defect_predictor_utils/prepare-class-list.sh"
+        prepare_class_list_command = os.path.join(current_path, 'defect_predictor_utils', 'prepare-class-list.sh')
         subprocess.check_call([prepare_class_list_command, self.project_path, src_path, self.sbst_dpg_workspace])
 
         prepare_class_list_out_file = "all_classes.log"
@@ -66,12 +70,15 @@ class SBSTDPG:
                 self.project.add_class(clazz)
 
     def collect_defect_prediction_results(self):
+        self.logger.debug('Collecting defect prediction results.')
         self.defect_predictor.load_defect_scores(self.project, self.sbst_dpg_workspace)
 
     def run_bads(self):
+        self.logger.info('Starting BADS.')
         self.bads.allocate_time_budget(self.project, self.defect_predictor.get_time_spent())
 
     def run_sbst(self):
+        self.logger.info('Starting SBST.')
         current_path = os.path.dirname(os.path.realpath(__file__))
         self.sbst.run(self.project, self.project_path, current_path, self.sbst_dpg_workspace)
 

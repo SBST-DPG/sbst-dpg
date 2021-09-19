@@ -1,4 +1,5 @@
 from sbst_dpg.sbst.evosuite import Evosuite
+from sbst_dpg.utils.logging_utils import LoggingUtils
 
 
 class SbstFactory:
@@ -8,4 +9,4 @@ class SbstFactory:
         if sbst_type == "EvoSuite":
             return Evosuite()
         else:
-            print('Error')
+            LoggingUtils.error('Unsupported SBST tool - %s' % sbst_type)
