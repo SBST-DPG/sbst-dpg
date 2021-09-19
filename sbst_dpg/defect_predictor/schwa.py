@@ -44,6 +44,6 @@ class Schwa(DefectPredictor):
                 defect_score = schwa_result_row[1]
                 if project.class_exists(fq_class_name):
                     project.set_defect_score(fq_class_name, defect_score)
-                    self.logger.debug('%s - %f' % (fq_class_name, defect_score))
+                    self.logger.debug('%s - %s' % (fq_class_name, defect_score))
                 else:
                     self.logger.debug('Ignoring %s since it is not a Java class (source file)' % fq_class_name)
