@@ -14,7 +14,6 @@ class Evosuite(Sbst):
         super().__init__()
 
     def run(self, project, project_path, current_path, sbst_dpg_workspace):
-        os.chmod(current_path + "/evosuite_utils/run-evosuite.sh", 0o777)
         project_cp = os.path.join(project_path, ConfigsManager.get_instance().get_project_cp())
         for fq_class_name in project.get_classes():
             clazz = project.get_classes()[fq_class_name]

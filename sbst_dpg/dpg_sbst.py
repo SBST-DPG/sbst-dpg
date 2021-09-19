@@ -9,12 +9,15 @@ try:
 except ValueError:
     sys.path.append(current_path)
 
+os.chmod(os.path.join(current_path, 'defect_predictor_utils', 'prepare-class-list.sh'), 0o777)
+os.chmod(os.path.join(current_path, 'evosuite_utils', 'run-evosuite.sh'), 0o777)
+
 from sbst_dpg.configs.configs_manager import ConfigsManager
 from sbst_dpg.clazz import Clazz
 from sbst_dpg.defect_predictor.defect_predictor_factory import DefectPredictorFactory
 from sbst_dpg.project import Project
 from sbst_dpg.bads.bads_factory import BADSFactory
-from sbst_dpg.sbst.sbst_factory  import SbstFactory
+from sbst_dpg.sbst.sbst_factory import SbstFactory
 from sbst_dpg.loggers.logger_factory import LoggerFactory
 
 PROJECT_PATH = sys.argv[1]
@@ -45,8 +48,6 @@ class SBSTDPG:
         self.run_sbst()
 
     def load_configs(self):
-        # configs_manager = ConfigsManager(self.sbst_dpg_workspace)
-        # configs_manager.load_configs()
         ConfigsManager.get_instance().load_configs()
 
     def run_defect_predictor(self):
@@ -54,7 +55,6 @@ class SBSTDPG:
 
     def collect_classes_in_project(self, src_path):
         current_path = os.path.dirname(os.path.realpath(__file__))
-        os.chmod(current_path + "/defect_predictor_utils/prepare-class-list.sh", 0o777)
         prepare_class_list_command = current_path + "/defect_predictor_utils/prepare-class-list.sh"
         subprocess.check_call([prepare_class_list_command, self.project_path, src_path, self.sbst_dpg_workspace])
 
