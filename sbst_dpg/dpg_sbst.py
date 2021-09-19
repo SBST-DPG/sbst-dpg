@@ -3,11 +3,11 @@ import subprocess
 import sys
 
 current_path = os.path.dirname(os.path.realpath(__file__))
-current_path = current_path[:-9]
+tool_path = current_path[:-9]
 try:
-    sys.path.index(current_path)
+    sys.path.index(tool_path)
 except ValueError:
-    sys.path.append(current_path)
+    sys.path.append(tool_path)
 
 os.chmod(os.path.join(current_path, 'defect_predictor_utils', 'prepare-class-list.sh'), 0o777)
 os.chmod(os.path.join(current_path, 'evosuite_utils', 'run-evosuite.sh'), 0o777)
