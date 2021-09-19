@@ -1,0 +1,1 @@
+from sbst_dpg.configs import configs_manager
