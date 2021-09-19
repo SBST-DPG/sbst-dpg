@@ -21,10 +21,6 @@ class ExpBADS(BADS):
         self.assign_tiers(project)
         self.assign_weights(project)
         self.assign_time_budgets(project, time_spent_dp)
-        allocated_time_budget = 0
-        for clazz in project.get_clazzes():
-            allocated_time_budget += clazz.get_time_budget()
-        print('Allocated time budget - %d' % allocated_time_budget)
 
     def rank_classes(self, project):
         self.logger.debug('Ranking classes by defect scores.')
