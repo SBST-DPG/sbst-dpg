@@ -14,6 +14,10 @@ See our paper, [Defect Prediction Guided Search-Based Software Testing](https://
 
 # How to use SBST-DPG?
 
+Requirements
+------------
+* JDK 1.8 (as required by [EvoSuite](https://github.com/EvoSuite/evosuite))
+
 Parameter Settings
 ------------
 
