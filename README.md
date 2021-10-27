@@ -10,6 +10,8 @@ BADS takes defect scores from the defect predictor and allocates time budgets to
 
 We use [EvoSuite](https://github.com/EvoSuite/evosuite) with DynaMOSA as SBST and it runs test generation for all the classes with the allocated time budgets by BADS.
 
+See our paper, [Defect Prediction Guided Search-Based Software Testing](https://anjana-perera.github.io/papers/ASE20_Defect.pdf) for more details.
+
 # How to use SBST-DPG?
 
 Parameter Settings
@@ -71,3 +73,16 @@ Currently, SBST-DPG can be run by executing the source code.
     - `python3 -u sbst_dpg/dpg_sbst.py <path to project under test>`
 
 # Publications
+
+If you use the SBST-DPG tool, please cite:
+
+```
+@inproceedings{perera2020defect,
+  title={Defect prediction guided search-based software testing},
+  author={Perera, Anjana and Aleti, Aldeida and B{\"o}hme, Marcel and Turhan, Burak},
+  booktitle={2020 35th IEEE/ACM International Conference on Automated Software Engineering (ASE)},
+  pages={448--460},
+  year={2020},
+  organization={IEEE}
+}
+```
