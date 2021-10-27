@@ -15,7 +15,7 @@ We use [EvoSuite](https://github.com/EvoSuite/evosuite) with DynaMOSA as SBST an
 Parameter Settings
 ------------
 
-All the parameters of SBST-DPG are defined in [configs.yml]()
+All the parameters of SBST-DPG are defined in [configs.yml](https://github.com/SBST-DPG/sbst-dpg/blob/c0fe6730cb309f59db159adc961976328df7fefb/configs.yml)
 
 | Parameter                 | Description                                      | Default Value  | 
 |---------------------------|--------------------------------------------------|---------------:|
