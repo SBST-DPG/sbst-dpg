@@ -1,0 +1,22 @@
+defect_predictor:
+  name: Schwa
+  output_file: schwa_results.csv
+bads:
+  mode: exp
+  e_a: 0.02393705
+  e_b: 0.9731946
+  e_c: -10.47408
+  tier_threshold: 0.5
+  grouping: 5p
+  t_total: 60
+  t_total_first_tier: 100
+  t_total_second_tier: 20
+  t_min_first_tier: 60
+  t_min_second_tier: 10
+sbst:
+  src_path: src/main/java
+  sbst: EvoSuite
+  project_classpath: target/classes
+log:
+  primary_logger_type: console
+  log_level: info
