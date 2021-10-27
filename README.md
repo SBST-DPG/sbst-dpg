@@ -15,7 +15,7 @@ We use [EvoSuite](https://github.com/EvoSuite/evosuite) with DynaMOSA as SBST an
 Parameter Settings
 ------------
 
-All the parameters of SBST-DPG are defined in [configs.yml](https://github.com/SBST-DPG/sbst-dpg/blob/c0fe6730cb309f59db159adc961976328df7fefb/configs.yml)
+All the parameters of SBST-DPG are defined in [configs.yml](https://github.com/SBST-DPG/sbst-dpg/blob/c0fe6730cb309f59db159adc961976328df7fefb/configs.yml) file.
 
 | Parameter                 | Description                                      | Default Value  | 
 |---------------------------|--------------------------------------------------|---------------:|
@@ -43,3 +43,31 @@ All the parameters of SBST-DPG are defined in [configs.yml](https://github.com/S
 | log_level | Log level | info |
 
 <sup>1</sup>All the classes in a small group get the same time budget. If you need only one class in a small group, then use `1` for `grouping`. `5p` means small group size is 0.05 (=5%) * *# classes in the project*.
+
+Steps to Run SBST-DPG
+------------
+
+Currently, SBST-DPG can be run by executing the source code.
+
+1. Clone SBST-DPG:
+
+    - `git clone https://github.com/SBST-DPG/sbst-dpg.git <sbst-dpg dir>`
+
+2. Setup Schwa:
+
+    - Currently, Schwa needs to be setup manually. We are thinking of automating this process in the future.
+    - `git clone https://github.com/SBST-DPG/schwa.git <schwa dir>`
+    - `cd <schwa dir>`
+    - `git checkout csv-output`
+    - `python3 setup.py bdist_wheel`
+    - `cd dist`
+    - `pip3 install Schwa-0.1.dev27-py3-none-any.whl`
+
+3. Create workspace directory for sbst-dpg in the root of the project under test. Configure the parameters listed above and locate the [configs.yml](https://github.com/SBST-DPG/sbst-dpg/blob/c0fe6730cb309f59db159adc961976328df7fefb/configs.yml) file in the workspace directory.
+
+3. Run SBST-DPG
+
+    - `cd <sbst-dpg dir>`
+    - `python3 -u sbst_dpg/dpg_sbst.py <path to project under test>`
+
+# Publications
